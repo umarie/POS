@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const customerRoutes = require("./Routes/Customer_Route");
 const storeRoutes = require("./Routes/Store_Route");
-const supplierRoutes = require("./Routes/Supplier_Route");
+
 const roleRoutes = require("./Routes/Role_Route");
 const productRoutes = require("./Routes/Product_Route");
 const mongoose = require("mongoose");
@@ -40,7 +40,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 });
 
 app.use("/api/customers", customerRoutes);
-app.use("/api/suppliers",supplierRoutes );
+// app.use("/api/suppliers",supplierRoutes );
 app.use("/api/products", productRoutes);
 app.use("/api/roles",roleRoutes );
 app.use("/api/stores",storeRoutes );
@@ -51,7 +51,8 @@ app.use("/api/stores",storeRoutes );
 
 mongoose
   .connect(
-    "mongodb+srv://umair:123@cluster0.3bksnf4.mongodb.net/test"
+    "mongodb://localhost:27017/web"
+
   )
   .then(() => {
     app.listen(5000);
